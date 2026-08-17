@@ -1,190 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Youngjae Choi — CV</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<meta charset="utf-8">
+<title>Youngjae Choi — CV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#fafaf9; --bg-soft:#f1f0ee; --card:#ffffff; --line:#e5e3e0;
+  --text:#1c1917; --muted:#6b6560; --accent:#0f766e; --accent-soft:#0f766e14;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px -12px rgba(28,25,23,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101012; --bg-soft:#161619; --card:#1a1a1e; --line:#2a2a2f;
+    --text:#e8e6e3; --muted:#9d9791; --accent:#2dd4bf; --accent-soft:#2dd4bf1a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  line-height:1.6; font-size:16px; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:820px;margin:0 auto;padding:56px 24px 72px}
+
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:8px}
+h1{font-size:clamp(32px,6vw,42px);font-weight:800;letter-spacing:-.03em}
+.role{color:var(--muted);font-size:17px;margin-top:4px}
+.top .links{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:8px 16px;border-radius:9px;font-size:14px;font-weight:600;
+  border:1px solid var(--line);color:var(--text);background:var(--card);box-shadow:var(--shadow);
+}
+.btn:hover{border-color:var(--accent);text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+@media (prefers-color-scheme: dark){.btn.primary{color:#08211d}}
+
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:14.5px;margin:20px 0 0}
+.meta a{color:var(--muted)}
+.meta a:hover{color:var(--accent)}
+
+h2{
+  font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  margin:48px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.item{display:grid;grid-template-columns:170px 1fr;gap:6px 24px;padding:14px 0}
+.item+.item{border-top:1px dashed var(--line)}
+.item .when{font-size:13.5px;font-weight:600;color:var(--muted);padding-top:3px}
+.item h3{font-size:16.5px;font-weight:650;letter-spacing:-.01em}
+.item .org{font-size:14.5px;color:var(--muted)}
+.item p.desc{margin-top:6px;font-size:14.5px;color:var(--muted)}
+@media(max-width:560px){.item{grid-template-columns:1fr}.item .when{padding-top:0}}
+
+.pubs{counter-reset:pub}
+.pub{display:grid;grid-template-columns:64px 1fr;gap:0 16px;padding:13px 0}
+.pub+.pub{border-top:1px dashed var(--line)}
+.pub .venue{
+  font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--accent);
+  background:var(--accent-soft);border-radius:6px;padding:3px 0;text-align:center;height:fit-content;margin-top:3px;
+}
+.pub h3{font-size:15.5px;font-weight:600;line-height:1.45}
+.pub h3 a{color:var(--text)}
+.pub h3 a:hover{color:var(--accent);text-decoration:none}
+.pub .authors{font-size:13.5px;color:var(--muted);margin-top:3px}
+.pub .authors b{color:var(--text);font-weight:600}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13.5px;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+
+@media print{
+  :root{--bg:#fff;--card:#fff;--line:#ddd;--text:#111;--muted:#555;--accent:#0f766e;--shadow:none}
+  .top .links{display:none}
+  .wrap{padding:0}
+  body{font-size:13px}
+}
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="resume_wrapper">
-	<div class="resume_left">
-		<div class="resume_bottom">
-			<div class="resume_item resume_namerole">
-				<div class="name">Youngjae Choi</div>
-				<div class="role">AI Engineer &amp; Researcher</div>
-			</div>
-			<div class="resume_item resume_profile">
-				<div class="resume_title">Profile</div>
-				<div class="resume_info">AI engineer at Motifdrive (autonomous vehicle start-up) and M.S. student in Digital Media at Soongsil University (Reality Lab, advised by Prof. Heewon Kim).
-				Conducting research on multimodal generative models with a focus on generating fine-grained images and expressive human motions from text inputs,
-				including methods that reflect detailed semantics and emotional context in the generation process.</div>
-			</div>
-			<div class="resume_item resume_address">
-				<div class="resume_title">Address</div>
-				<div class="resume_info">
-						Department of Digital Media,<br>
-						Soongsil University,<br>
-						369 Sangdo-ro, Dongjak-gu,<br>
-						Seoul, Republic of Korea, 06978
-				</div>
-			</div>
-			<div class="resume_item resume_contact">
-				<div class="resume_title">Contact</div>
-				<div class="resume_info">
-					<div class="resume_subtitle">Email</div>
-					<div class="resume_subinfo">yj951118@soongsil.ac.kr</div>
-				</div>
-				<div class="resume_info">
-					<div class="resume_subtitle">Email</div>
-					<div class="resume_subinfo">yscompany18@gmail.com</div>
-				</div>
-			</div>
-			<div class="resume_item resume_skills">
-				<div class="resume_title">Skills</div>
-				<div class="resume_info">
-					<div class="skills_list">
-						<div class="skills_left">Python</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 90%"></span>
-							</p>
-						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">PyTorch</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 90%"></span>
-							</p>
-						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">MMCV (Det/Seg)</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 80%"></span>
-							</p>
-						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">3DGS</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 80%"></span>
-							</p>
-						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">MATLAB</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 70%"></span>
-							</p>
-						</div>
-					</div>
-					<div class="skills_list">
-						<div class="skills_left">LaTeX</div>
-						<div class="skills_bar">
-							<p>
-								<span style="width: 90%"></span>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="resume_right">
-		<div class="resume_item resume_namerole">
-			<div class="name">Youngjae Choi</div>
-			<div class="role">AI Engineer &amp; Researcher @ Motifdrive &amp; Soongsil University</div>
-		</div>
-		<div class="resume_item resume_education">
-			<div class="resume_title">Education</div>
-			<div class="resume_info">
-				<div class="resume_data">
-					<div class="year">Mar. 2024 - Present</div>
-					<div class="content">
-						<p>M.S. in Department of Digital Media</p>
-						<p>Soongsil University, Seoul, Korea. Advisor: Prof. Heewon Kim (Reality Lab).</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">Mar. 2015 - Feb. 2022</div>
-					<div class="content">
-						<p>B.S. in Department of Statistics and Actuarial Science</p>
-						<p>Soongsil University, Seoul, Korea.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="resume_item resume_experience">
-			<div class="resume_title">Experience</div>
-			<div class="resume_info">
-				<div class="resume_data">
-					<div class="year">Jan. 2026 - Present</div>
-					<div class="content">
-						<p>AI Engineer, Motifdrive (Autonomous Vehicle Start-up)</p>
-						<p>Generative AI for synthetic data generation and augmentation in end-to-end autonomous driving; VLM-based data management and scenario mining frameworks; 3D object detection with multi-modal sensor data.</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">Mar. 2024 - Feb. 2026</div>
-					<div class="content">
-						<p>Graduate Researcher, Reality Lab, Soongsil University</p>
-						<p>Multimodal generative models: fine-grained image generation and emotion-aware text-to-motion generation. Publications at BMVC 2025, WACV 2026, CVPR 2026, CVPRW 2026, and ECCV 2026.</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">Jun. 2023 - Feb. 2024</div>
-					<div class="content">
-						<p>Research Intern, Reality Lab, Soongsil University</p>
-						<p>AI-powered XR Smart Space Solution Development (SME R&amp;D Support Program): AR scene reconstruction with 3D Gaussian Splatting and automatic box-collider estimation for Unity-based real-time XR interaction.</p>
-					</div>
-				</div>
-				<div class="resume_data">
-					<div class="year">2024 - 2025</div>
-					<div class="content">
-						<p>Teaching Assistant, Soongsil University</p>
-						<p>Deep Learning (Spring 2024), Machine Learning (Spring 2025).</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="resume_item resmue_interests">
-			<div class="resume_title">Interests</div>
-			<div class="resume_info">
-				<div class="interests">
-					<div class="int_icon">
-						<i class="fas fa-eye"></i>
-					</div>
-					<div class="int_data">Computer Vision</div>
-				</div>
-				<div class="interests">
-					<div class="int_icon">
-						<i class="fas fa-image"></i>
-					</div>
-					<div class="int_data">Image Generation</div>
-				</div>
-				<div class="interests">
-					<div class="int_icon">
-						<i class="fas fa-running"></i>
-					</div>
-					<div class="int_data">Motion Generation</div>
-				</div>
-				<div class="interests">
-					<div class="int_icon">
-						<i class="fas fa-robot"></i>
-					</div>
-					<div class="int_data">Embodied AI</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="top">
+    <div>
+      <h1>Youngjae Choi</h1>
+      <div class="role">AI Engineer &amp; Researcher — Motifdrive · Reality Lab, Soongsil University</div>
+    </div>
+    <div class="links">
+      <a class="btn primary" href="images/CV_yjchoi.pdf">PDF</a>
+      <a class="btn" href="index.html">Home</a>
+    </div>
+  </div>
+
+  <div class="meta">
+    <span><a href="mailto:yj951118@soongsil.ac.kr">yj951118@soongsil.ac.kr</a></span>
+    <span><a href="mailto:yscompany18@gmail.com">yscompany18@gmail.com</a></span>
+    <span><a href="https://github.com/researcheryj" target="_blank" rel="noopener">github.com/researcheryj</a></span>
+    <span>369 Sangdo-ro, Dongjak-gu, Seoul, Korea 06978</span>
+  </div>
+
+  <h2>Education</h2>
+  <div class="item">
+    <div class="when">Mar. 2024 — Present</div>
+    <div>
+      <h3>M.S. in Department of Digital Media</h3>
+      <div class="org">Soongsil University, Seoul, Korea · Advisor: Prof. Heewon Kim (Reality Lab)</div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Mar. 2015 — Feb. 2022</div>
+    <div>
+      <h3>B.S. in Department of Statistics and Actuarial Science</h3>
+      <div class="org">Soongsil University, Seoul, Korea</div>
+    </div>
+  </div>
+
+  <h2>Experience</h2>
+  <div class="item">
+    <div class="when">Jan. 2026 — Present</div>
+    <div>
+      <h3>AI Engineer</h3>
+      <div class="org">Motifdrive (Autonomous Vehicle Start-up)</div>
+      <p class="desc">Generative AI for synthetic data generation and augmentation in end-to-end autonomous driving; VLM-based data management and scenario mining frameworks; 3D object detection with multi-modal sensor data.</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Mar. 2024 — Feb. 2026</div>
+    <div>
+      <h3>Graduate Researcher</h3>
+      <div class="org">Reality Lab, Soongsil University</div>
+      <p class="desc">Multimodal generative models: fine-grained image generation and emotion-aware text-to-motion generation. Publications at BMVC 2025, WACV 2026, CVPR 2026, CVPRW 2026, and ECCV 2026.</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">Jun. 2023 — Feb. 2024</div>
+    <div>
+      <h3>Research Intern</h3>
+      <div class="org">Reality Lab, Soongsil University</div>
+      <p class="desc">AI-powered XR Smart Space Solution Development (SME R&amp;D Support Program): AR scene reconstruction with 3D Gaussian Splatting and automatic box-collider estimation for real-time interaction in Unity-based XR environments.</p>
+    </div>
+  </div>
+  <div class="item">
+    <div class="when">2024 — 2025</div>
+    <div>
+      <h3>Teaching Assistant</h3>
+      <div class="org">Soongsil University</div>
+      <p class="desc">Deep Learning (Spring 2024), Machine Learning (Spring 2025).</p>
+    </div>
+  </div>
+
+  <h2>Publications</h2>
+  <div class="pubs">
+    <div class="pub">
+      <span class="venue">ECCV '26</span>
+      <div>
+        <h3>CulinaryCut-VLP: A Vision Language Physics Benchmark with Force Aware MPM</h3>
+        <div class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</div>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="venue">CVPR '26</span>
+      <div>
+        <h3>Reference-aware Exposure Correction via Intrinsic Image Decomposition</h3>
+        <div class="authors">Hyunjun Koh, <b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</div>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="venue">CVPRW '26</span>
+      <div>
+        <h3>FEEL: Focus on Emotion-Enriched Motion Using Unsupervised Learning for Text-to-Motion Generation</h3>
+        <div class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</div>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="venue">WACV '26</span>
+      <div>
+        <h3>MBTI: Metric-Based Textual Inversion for Fine-Grained Image Generation</h3>
+        <div class="authors">ByungKwan Chae*, <b>Youngjae Choi</b>*, and Heewon Kim</div>
+      </div>
+    </div>
+    <div class="pub">
+      <span class="venue">BMVC '25</span>
+      <div>
+        <h3><a href="https://ssu-reality-lab.github.io/UDT/" target="_blank" rel="noopener">UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models</a></h3>
+        <div class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh*, Byungkwan Chae*, Hojae Jeong*, and Heewon Kim</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="chips">
+    <span class="chip">Python</span>
+    <span class="chip">PyTorch</span>
+    <span class="chip">MATLAB</span>
+    <span class="chip">Object Detection &amp; Segmentation (MMCV)</span>
+    <span class="chip">3DGS</span>
+    <span class="chip">LaTeX</span>
+  </div>
+
+  <h2>Research Interests</h2>
+  <div class="chips">
+    <span class="chip">Computer Vision</span>
+    <span class="chip">Deep Learning</span>
+    <span class="chip">Motion Generation</span>
+    <span class="chip">Image Generation</span>
+    <span class="chip">Embodied AI</span>
+  </div>
+
 </div>
-
 </body>
 </html>

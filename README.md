@@ -2,10 +2,9 @@
 
 Personal academic homepage of **Youngjae Choi** — AI Engineer & Researcher at Motifdrive / Reality Lab, Soongsil University.
 
-- `index.html` — main page (about, publications, projects, contact)
-- `cv.html` — web CV
+- `index.html` — main page (about, publications, experience, contact). Self-contained custom design, no external dependencies, light/dark mode aware.
+- `cv.html` — web CV (print-friendly)
 - `images/CV_yjchoi.pdf` — PDF CV
-- Template: [Strata by HTML5 UP](https://html5up.net) (CCA 3.0 license)
 
 ## Deploy
 

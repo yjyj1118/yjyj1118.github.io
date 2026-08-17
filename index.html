@@ -1,187 +1,348 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Youngjae Choi</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<h1><strong>Youngjae Choi</strong><br />
-						AI Engineer &amp; Researcher <br />
-						@ Motifdrive &amp; Soongsil University<br /></h1>
-				</div>
-			</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Youngjae Choi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Youngjae Choi — AI Engineer &amp; Researcher. Multimodal generative models, autonomous driving, embodied AI.">
+<style>
+:root{
+  --bg:#fafaf9; --bg-soft:#f1f0ee; --card:#ffffff; --line:#e5e3e0;
+  --text:#1c1917; --muted:#6b6560; --accent:#0f766e; --accent-soft:#0f766e14;
+  --badge:#0f766e; --badge-text:#ffffff; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px -12px rgba(28,25,23,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#101012; --bg-soft:#161619; --card:#1a1a1e; --line:#2a2a2f;
+    --text:#e8e6e3; --muted:#9d9791; --accent:#2dd4bf; --accent-soft:#2dd4bf1a;
+    --badge:#134e4a; --badge-text:#99f6e4; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  line-height:1.65; font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
 
-		<!-- Main -->
-			<div id="main">
+/* nav */
+nav{
+  position:sticky;top:0;z-index:10;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;gap:22px;height:56px}
+nav .brand{font-weight:700;letter-spacing:-.01em;color:var(--text);margin-right:auto}
+nav a.item{color:var(--muted);font-size:14.5px;font-weight:500}
+nav a.item:hover{color:var(--text);text-decoration:none}
+@media(max-width:560px){nav a.item{display:none}}
 
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>Who is Youngjae Choi?<br />
-							</h2>
-						</header>
-						<h3>Research Interest</h3>
-							<ul>
-								<li>Computer Vision &amp; Deep Learning.</li>
-								<li>Image Generation / Motion Generation.</li>
-								<li>Embodied AI &amp; Autonomous Driving.</li>
-							</ul>
-						<blockquote>
-						I am an AI engineer at Motifdrive, an autonomous vehicle start-up, and a Master's student in the Department of Digital Media at Soongsil University, working in the Reality Lab under Prof. Heewon Kim. <br >
-						My research focuses on multimodal generative models — generating fine-grained images and expressive human motions from text inputs, with methods that reflect detailed semantics and emotional context in the generation process. <br ><br >
-						At Motifdrive, I research generative AI for synthetic data generation and augmentation in end-to-end autonomous driving, develop VLM-based data management and scenario mining frameworks, and contribute to 3D object detection research using multi-modal sensor data.
-					</section>
+/* hero */
+header.hero{padding:96px 0 72px;border-bottom:1px solid var(--line)}
+.hero .kicker{
+  display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:18px;
+}
+.hero h1{font-size:clamp(40px,7vw,60px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+.hero p.role{margin-top:18px;font-size:19px;color:var(--muted);max-width:620px}
+.hero p.role b{color:var(--text);font-weight:600}
+.hero .actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:10px;font-size:15px;font-weight:600;
+  border:1px solid var(--line);color:var(--text);background:var(--card);
+  box-shadow:var(--shadow);transition:transform .15s ease,border-color .15s ease;
+}
+.btn:hover{transform:translateY(-2px);text-decoration:none;border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+@media (prefers-color-scheme: dark){.btn.primary{color:#08211d}}
 
-					<ul class="actions">
-					    <li><a href="cv.html" class="button">CV - Web</a></li>
-					    <li><a href="images/CV_yjchoi.pdf" class="button">CV - PDF</a></li>
-					</ul>
+/* sections */
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+h2{
+  font-size:26px;font-weight:750;letter-spacing:-.02em;margin-bottom:8px;
+  display:flex;align-items:baseline;gap:12px;
+}
+h2 .count{font-size:14px;color:var(--muted);font-weight:500}
+.sub{color:var(--muted);margin-bottom:36px;max-width:640px}
 
-				<!-- Two -->
-					<section id="two">
-						<h2>Publications</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/WACV2026_mbti.png" class="image fit thumb"><img src="images/WACV2026_mbti.png" alt="" /></a>
-								<h3>MBTI: Metric-Based Textual Inversion for Fine-Grained Image Generation</h3>
-								<p>ByungKwan Chae*, <strong>Youngjae Choi</strong>*, and Heewon Kim (WACV 2026)</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/BMVC2025_udt.png" class="image fit thumb"><img src="images/BMVC2025_udt.png" alt="" /></a>
-								<h3>
-									<a href="https://ssu-reality-lab.github.io/UDT/" target="_blank">
-										UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models
-									</a>
-								</h3>
-								<p><strong>Youngjae Choi</strong>*, Hyunsuh Koh*, Byungkwan Chae*, Hojae Jeong*, and Heewon Kim (BMVC 2025)</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/CVPRW2026_feel.png" class="image fit thumb"><img src="images/CVPRW2026_feel.png" alt="" /></a>
-								<h3>FEEL: Focus on Emotion-Enriched Motion Using Unsupervised Learning for Text-to-Motion Generation</h3>
-								<p><strong>Youngjae Choi</strong>*, Hyunsuh Koh, and Heewon Kim (CVPRW 2026)</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/CVPR2026_CLP.png" class="image fit thumb"><img src="images/CVPR2026_CLP.png" alt="" /></a>
-								<h3>Reference-aware Exposure Correction via Intrinsic Image Decomposition</h3>
-								<p>Hyunjun Koh, <strong>Youngjae Choi</strong>*, Hyunsuh Koh, and Heewon Kim (CVPR 2026)</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/ECCV2026_CC.png" class="image fit thumb"><img src="images/ECCV2026_CC.png" alt="" /></a>
-								<h3>CulinaryCut-VLP: A Vision Language Physics Benchmark with Force Aware MPM</h3>
-								<p><strong>Youngjae Choi</strong>*, Hyunsuh Koh, and Heewon Kim (ECCV 2026)</p>
-							</article>
-						</div>
-					</section>
+/* about */
+.about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:40px}
+@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
+.about-grid p+p{margin-top:14px}
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px;box-shadow:var(--shadow);height:fit-content;
+}
+.panel h3{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-size:13.5px;font-weight:500;padding:5px 12px;border-radius:999px;
+  background:var(--accent-soft);color:var(--accent);border:1px solid transparent;
+}
+.panel .chips+h3{margin-top:24px}
 
-				<!-- Three -->
-					<section id="three">
-						<h2>Projects &amp; Experience</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/fulls/01.jpg" alt="" /></a>
-								<h3>AI-powered XR Smart Space Solution Development</h3>
-								<p>SME R&amp;D Support Program. Reconstructing interactive virtual spaces in AR with 3D Gaussian Splatting (3DGS); automatic box-collider estimation from reconstructed geometry for real-time interaction in Unity-based XR environments.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/fulls/02.jpg" alt="" /></a>
-								<h3>Motifdrive — Autonomous Driving AI</h3>
-								<p>Generative AI for synthetic data generation and augmentation in end-to-end autonomous driving, VLM-based data management and scenario mining frameworks, and 3D object detection with multi-modal sensor data. (Jan. 2026 – )</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/fulls/03.jpg" alt="" /></a>
-								<h3>Reality Lab, Soongsil University</h3>
-								<p>Research Intern (Jun. 2023 – Feb. 2024), Graduate Researcher (Mar. 2024 – Feb. 2026). Teaching Assistant for Deep Learning (Spring 2024) and Machine Learning (Spring 2025).</p>
-							</article>
-						</div>
-					</section>
+/* publications */
+.pub{
+  display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px;box-shadow:var(--shadow);
+  transition:transform .15s ease,border-color .15s ease;
+}
+.pub:hover{transform:translateY(-2px);border-color:var(--accent)}
+.pub+.pub{margin-top:16px}
+.pub .thumb{
+  width:190px;height:120px;border-radius:10px;overflow:hidden;
+  background:var(--bg-soft);border:1px solid var(--line);display:block;
+}
+.pub .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.pub .venue{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;
+  padding:3px 10px;border-radius:6px;background:var(--badge);color:var(--badge-text);
+  margin-bottom:8px;
+}
+.pub h3{font-size:17.5px;font-weight:650;letter-spacing:-.01em;line-height:1.4}
+.pub h3 a{color:var(--text)}
+.pub h3 a:hover{color:var(--accent);text-decoration:none}
+.pub .authors{font-size:14.5px;color:var(--muted);margin-top:6px}
+.pub .authors b{color:var(--text);font-weight:600}
+@media(max-width:620px){
+  .pub{grid-template-columns:1fr}
+  .pub .thumb{width:100%;height:150px}
+}
 
-				<!-- five -->
-				<section id="five">
-					<h2>Contact</h2>
-					<p>
-						For inquiries, research collaboration, or project discussions, please leave a message below.
-						Provide your name, email, and a brief description, and your default mail client will open with the prepared content.
-					</p>
+/* experience timeline */
+.timeline{position:relative;margin-left:8px;padding-left:28px;border-left:2px solid var(--line)}
+.entry{position:relative;padding-bottom:36px}
+.entry:last-child{padding-bottom:0}
+.entry::before{
+  content:"";position:absolute;left:-37px;top:7px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--accent);
+}
+.entry .when{font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--accent);text-transform:uppercase}
+.entry h3{font-size:18px;font-weight:650;margin-top:4px;letter-spacing:-.01em}
+.entry .org{font-size:15px;color:var(--muted);margin-top:2px}
+.entry p.desc{margin-top:8px;color:var(--muted);font-size:15px;max-width:620px}
 
-					<div class="row">
-						<!-- CONTACT FORM -->
-						<div class="col-8 col-12-small">
-							<form action="mailto:yj951118@soongsil.ac.kr" method="post" enctype="text/plain">
-								<div class="row gtr-uniform gtr-50">
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-									</div>
-								</div>
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:620px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;box-shadow:var(--shadow);
+}
+.contact-card .label{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.contact-card .value{font-size:15.5px;word-break:break-all}
 
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</div>
+/* footer */
+footer{padding:44px 0 56px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
 
-						<!-- CONTACT INFO -->
-						<div class="col-4 col-12-small">
-							<ul class="labeled-icons">
-								<li>
-									<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-									<a href="https://maps.google.com/?q=369+Sangdo-ro+Dongjak-gu+Seoul">
-										Department of Digital Media,<br>
-										Soongsil University,<br>
-										369 Sangdo-ro, Dongjak-gu,<br>
-										Seoul, Republic of Korea, 06978
-									</a>
-								</li>
+</style>
+</head>
+<body>
 
-								<li>
-									<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-									<a href="mailto:yj951118@soongsil.ac.kr">yj951118@soongsil.ac.kr</a><br>
-									<a href="mailto:yscompany18@gmail.com">yscompany18@gmail.com</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</section>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">Youngjae Choi</a>
+    <a class="item" href="#about">About</a>
+    <a class="item" href="#publications">Publications</a>
+    <a class="item" href="#experience">Experience</a>
+    <a class="item" href="#contact">Contact</a>
+  </div>
+</nav>
 
-			</div>
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">AI Engineer &amp; Researcher</span>
+    <h1>Youngjae Choi</h1>
+    <p class="role">
+      Building <b>multimodal generative models</b> at the Reality Lab, Soongsil University,
+      and shipping <b>autonomous-driving AI</b> at Motifdrive —
+      fine-grained image generation, emotion-aware motion synthesis, and embodied AI.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="images/CV_yjchoi.pdf">Curriculum Vitae</a>
+      <a class="btn" href="cv.html">CV — Web</a>
+      <a class="btn" href="https://github.com/researcheryj" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:yj951118@soongsil.ac.kr">Email</a>
+    </div>
+  </div>
+</header>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://github.com/researcheryj" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://ssurealitylab.github.io/Realitylab-site/" class="icon brands fa-dribbble"><span class="label">Reality Lab</span></a></li>
-						<li><a href="mailto:yj951118@soongsil.ac.kr" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Youngjae Choi</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          I am an AI engineer at <b>Motifdrive</b>, an autonomous vehicle start-up, and an M.S. student
+          in the Department of Digital Media at <b>Soongsil University</b>, working in the Reality Lab
+          advised by Prof. Heewon Kim.
+        </p>
+        <p>
+          My research focuses on multimodal generative models — generating fine-grained images and
+          expressive human motions from text, with methods that reflect detailed semantics and
+          emotional context in the generation process.
+        </p>
+        <p>
+          At Motifdrive, I work on generative AI for synthetic data generation and augmentation in
+          end-to-end autonomous driving, VLM-based data management and scenario mining frameworks,
+          and 3D object detection with multi-modal sensor data.
+        </p>
+      </div>
+      <div class="panel">
+        <h3>Research Interests</h3>
+        <div class="chips">
+          <span class="chip">Computer Vision</span>
+          <span class="chip">Image Generation</span>
+          <span class="chip">Motion Generation</span>
+          <span class="chip">Embodied AI</span>
+          <span class="chip">Autonomous Driving</span>
+        </div>
+        <h3>Skills</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">MMCV</span>
+          <span class="chip">3DGS</span>
+          <span class="chip">MATLAB</span>
+          <span class="chip">LaTeX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications <span class="count">5</span></h2>
+    <p class="sub">* denotes equal contribution.</p>
 
-	</body>
+    <article class="pub">
+      <a class="thumb" href="images/ECCV2026_CC.png" target="_blank"><img src="images/ECCV2026_CC.png" alt="CulinaryCut-VLP"></a>
+      <div>
+        <span class="venue">ECCV 2026</span>
+        <h3>CulinaryCut-VLP: A Vision Language Physics Benchmark with Force Aware MPM</h3>
+        <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</p>
+      </div>
+    </article>
 
+    <article class="pub">
+      <a class="thumb" href="images/CVPR2026_CLP.pdf" target="_blank"><img src="images/CVPR2026_CLP.png" alt="Reference-aware Exposure Correction"></a>
+      <div>
+        <span class="venue">CVPR 2026</span>
+        <h3>Reference-aware Exposure Correction via Intrinsic Image Decomposition</h3>
+        <p class="authors">Hyunjun Koh, <b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</p>
+      </div>
+    </article>
+
+    <article class="pub">
+      <a class="thumb" href="images/CVPRW2026_feel.png" target="_blank"><img src="images/CVPRW2026_feel.png" alt="FEEL"></a>
+      <div>
+        <span class="venue">CVPRW 2026</span>
+        <h3>FEEL: Focus on Emotion-Enriched Motion Using Unsupervised Learning for Text-to-Motion Generation</h3>
+        <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</p>
+      </div>
+    </article>
+
+    <article class="pub">
+      <a class="thumb" href="images/WACV2026_mbti.pdf" target="_blank"><img src="images/WACV2026_mbti.png" alt="MBTI"></a>
+      <div>
+        <span class="venue">WACV 2026</span>
+        <h3>MBTI: Metric-Based Textual Inversion for Fine-Grained Image Generation</h3>
+        <p class="authors">ByungKwan Chae*, <b>Youngjae Choi</b>*, and Heewon Kim</p>
+      </div>
+    </article>
+
+    <article class="pub">
+      <a class="thumb" href="images/BMVC2025_udt.png" target="_blank"><img src="images/BMVC2025_udt.png" alt="UDT"></a>
+      <div>
+        <span class="venue">BMVC 2025</span>
+        <h3><a href="https://ssu-reality-lab.github.io/UDT/" target="_blank" rel="noopener">UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models</a></h3>
+        <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh*, Byungkwan Chae*, Hojae Jeong*, and Heewon Kim</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="sub">Industry and research experience.</p>
+    <div class="timeline">
+      <div class="entry">
+        <span class="when">Jan. 2026 — Present</span>
+        <h3>AI Engineer</h3>
+        <div class="org">Motifdrive · Autonomous Vehicle Start-up</div>
+        <p class="desc">Generative AI for synthetic data generation and augmentation in end-to-end autonomous driving; VLM-based data management and scenario mining frameworks; 3D object detection with multi-modal sensor data.</p>
+      </div>
+      <div class="entry">
+        <span class="when">Mar. 2024 — Feb. 2026</span>
+        <h3>M.S. Student &amp; Graduate Researcher</h3>
+        <div class="org">Reality Lab, Dept. of Digital Media, Soongsil University</div>
+        <p class="desc">Multimodal generative models: fine-grained image generation and emotion-aware text-to-motion generation. Advisor: Prof. Heewon Kim. TA for Deep Learning (Spring 2024) and Machine Learning (Spring 2025).</p>
+      </div>
+      <div class="entry">
+        <span class="when">Jun. 2023 — Feb. 2024</span>
+        <h3>Research Intern</h3>
+        <div class="org">Reality Lab, Soongsil University</div>
+        <p class="desc">AI-powered XR Smart Space Solution Development (SME R&amp;D Support Program): AR scene reconstruction with 3D Gaussian Splatting and automatic box-collider estimation for real-time interaction in Unity-based XR environments.</p>
+      </div>
+      <div class="entry">
+        <span class="when">Mar. 2015 — Feb. 2022</span>
+        <h3>B.S. in Statistics and Actuarial Science</h3>
+        <div class="org">Soongsil University, Seoul, Korea</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="sub">For inquiries, research collaboration, or project discussions.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="label">Academic Email</div>
+        <div class="value"><a href="mailto:yj951118@soongsil.ac.kr">yj951118@soongsil.ac.kr</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Personal Email</div>
+        <div class="value"><a href="mailto:yscompany18@gmail.com">yscompany18@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">GitHub</div>
+        <div class="value"><a href="https://github.com/researcheryj" target="_blank" rel="noopener">github.com/researcheryj</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Address</div>
+        <div class="value">Dept. of Digital Media, Soongsil University, 369 Sangdo-ro, Dongjak-gu, Seoul, Korea 06978</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Youngjae Choi</span>
+    <span>
+      <a href="https://github.com/researcheryj" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://ssurealitylab.github.io/Realitylab-site/" target="_blank" rel="noopener">Reality Lab</a> ·
+      <a href="mailto:yj951118@soongsil.ac.kr">Email</a>
+    </span>
+  </div>
+</footer>
+
+</body>
 </html>
