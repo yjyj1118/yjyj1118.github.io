@@ -7,12 +7,12 @@ Personal academic homepage of **Youngjae Choi** — AI Engineer & Researcher at 
 
 ## Deploy
 
-1. Create a GitHub repository named `researcheryj.github.io` under the `researcheryj` account.
+1. Create a GitHub repository named `yjyj1118.github.io` under the `yjyj1118` account.
 2. Push this folder to the `main` branch.
-3. The site is served at https://researcheryj.github.io within a few minutes.
+3. The site is served at https://yjyj1118.github.io within a few minutes.
 
 ```bash
 cd /home/youngjae/researcheryj.github.io
-git remote add origin git@github.com:researcheryj/researcheryj.github.io.git
+git remote add origin git@github.com:yjyj1118/yjyj1118.github.io.git
 git push -u origin main
 ```
