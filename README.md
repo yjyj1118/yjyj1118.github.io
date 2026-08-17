@@ -1,6 +1,6 @@
 # researcheryj.github.io
 
-Personal academic homepage of **Youngjae Choi** — AI Engineer & Researcher at Motifdrive / Reality Lab, Soongsil University.
+Personal academic homepage of **Youngjae Choi** — Research Scientist at Motifdrive / Reality Lab, Soongsil University.
 
 - `index.html` — single-page online CV (sidebar + main sheet, self-contained, no external dependencies). Style inspired by sharu725/online-cv with an autonomous-driving theme.
 - `images/CV_yjchoi.pdf` — PDF CV
