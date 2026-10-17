@@ -5,269 +5,273 @@
 <title>Youngjae Choi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Youngjae Choi — Research Scientist. Autonomous driving × generative AI.">
+<meta name="color-scheme" content="light dark">
 <style>
 :root{
-  --page:#e2e6e9;          /* page ground */
-  --sheet:#ffffff;         /* main column */
-  --side:#10181f;          /* sidebar: asphalt at night */
-  --side-soft:#8fa0ad;     /* sidebar muted text */
-  --side-line:#243240;
-  --lane:#f5b301;          /* lane-marking yellow */
-  --accent:#00a583;        /* lidar green */
-  --accent-dark:#007a61;
-  --ink:#25292e; --muted:#68707a; --line:#e3e6e9;
+  --bg:#fafaf9;
+  --surface:#ffffff;
+  --ink:#16191d;
+  --muted:#5f6670;
+  --faint:#9aa1a9;
+  --line:#e4e2dc;
+  --accent:#3b5bdb;
+  --accent-soft:rgba(59,91,219,.09);
+  --hl:#c2410c;            /* secondary highlight */
+  --hl-soft:rgba(194,65,12,.10);
+  --shadow:0 1px 2px rgba(22,25,29,.04),0 8px 24px -12px rgba(22,25,29,.18);
 }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1317; --surface:#161c21; --ink:#e9edf0; --muted:#a3adb6; --faint:#6c7780;
+    --line:#26303a; --accent:#8ea2ff; --accent-soft:rgba(142,162,255,.13);
+    --hl:#fb923c; --hl-soft:rgba(251,146,60,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1317; --surface:#161c21; --ink:#e9edf0; --muted:#a3adb6; --faint:#6c7780;
+  --line:#26303a; --accent:#8ea2ff; --accent-soft:rgba(142,162,255,.13);
+    --hl:#fb923c; --hl-soft:rgba(251,146,60,.14);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.7);
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{
-  background:var(--page);
-  color:var(--ink);
+  background:var(--bg);color:var(--ink);
   font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
-  font-size:15.5px;line-height:1.62;
-  padding:34px 16px;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
 }
-a{color:var(--accent-dark);text-decoration:none}
-a:hover{text-decoration:underline}
-.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+.mono{font-family:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+@media(max-width:600px){.wrap{padding:0 16px}}
 
-.sheet{
-  max-width:1080px;margin:0 auto;background:var(--sheet);
-  display:grid;grid-template-columns:315px 1fr;
-  box-shadow:0 18px 50px -18px rgba(16,24,31,.45);
-  border-radius:6px;overflow:hidden;
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:10;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
 }
-@media(max-width:820px){.sheet{grid-template-columns:1fr}}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:58px}
+.nav .brand{font-weight:800;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.nav .brand:hover{text-decoration:none}
+.nav .brand i{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.nav ul{list-style:none;display:flex;gap:22px;margin-left:auto}
+.nav ul a{color:var(--muted);font-size:14px;font-weight:500}
+.nav ul a:hover{color:var(--ink);text-decoration:none}
+.nav .theme{
+  background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;
+  width:34px;height:34px;cursor:pointer;font-size:15px;line-height:1;
+}
+.nav .theme:hover{color:var(--ink);border-color:var(--faint)}
+@media(max-width:760px){.nav ul{display:none}.nav .theme{margin-left:auto}}
 
-/* ============ SIDEBAR ============ */
-.side{background:var(--side);color:#e8edf1;padding:44px 34px 34px;position:relative}
-/* lane marking down the sidebar's right edge */
-.side::after{
-  content:"";position:absolute;top:0;right:7px;bottom:0;width:3px;
-  background:repeating-linear-gradient(var(--lane) 0 26px, transparent 26px 46px);
-  opacity:.5;
+/* ============ HERO ============ */
+.hero{padding:72px 0 56px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:36px}.hero{padding:48px 0 40px}}
+.eyebrow{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;
 }
-@media(max-width:820px){.side::after{display:none}}
+.eyebrow::before{content:"";width:22px;border-top:2px solid var(--accent)}
+.hero h1{font-size:clamp(40px,6.4vw,64px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:16px 0 18px}
+.hero .lead{font-size:18px;color:var(--muted);max-width:56ch}
+.hero .lead b{color:var(--ink);font-weight:650}
+.hero .lead em{font-style:normal;color:var(--ink);background:linear-gradient(transparent 62%,var(--hl-soft) 62%)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:10px;
+  font-weight:600;font-size:14.5px;border:1px solid var(--line);color:var(--ink);background:var(--surface);
+  transition:border-color .15s,transform .15s;
+}
+.btn:hover{text-decoration:none;border-color:var(--faint);transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{border-color:var(--ink)}
 
-.side .badge{
-  width:74px;height:74px;border-radius:50%;
-  border:2.5px solid var(--accent);display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:24px;letter-spacing:.02em;color:#fff;
-  position:relative;
-}
-.side .badge::after{ /* radar ring */
-  content:"";position:absolute;inset:-9px;border-radius:50%;
-  border:1px dashed rgba(0,165,131,.45);
-}
-.side h1{font-size:27px;font-weight:800;letter-spacing:-.01em;margin-top:22px;color:#fff}
-.side .tagline{color:var(--side-soft);font-size:14px;margin-top:6px;line-height:1.5}
-.side .tagline b{color:var(--accent);font-weight:600}
+/* at-a-glance card */
+.glance{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+.glance .now{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.glance .mark{width:52px;height:52px;border-radius:14px;background:var(--ink);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;letter-spacing:.02em;flex:none}
+.glance .now b{display:block;font-size:15.5px}
+.glance .now span{color:var(--muted);font-size:13.5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:18px 0;border-bottom:1px solid var(--line)}
+.stats div{text-align:center}
+.stats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.stats span{font-size:11.5px;color:var(--faint);font-family:ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase}
+.venues{display:flex;flex-wrap:wrap;gap:6px;padding-top:18px}
+.venues span{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
 
-.side .dl{
-  display:inline-block;margin-top:20px;padding:9px 18px;border-radius:5px;
-  background:var(--accent);color:#04120e;font-weight:700;font-size:13.5px;
-}
-.side .dl:hover{background:var(--lane);text-decoration:none}
+/* ============ SECTIONS ============ */
+section.block{padding:56px 0;border-top:1px solid var(--line)}
+section.block .wrap{display:grid;grid-template-columns:200px 1fr;gap:40px}
+@media(max-width:860px){section.block .wrap{grid-template-columns:1fr;gap:20px}section.block{padding:44px 0}}
+.label{position:sticky;top:90px;align-self:start}
+@media(max-width:860px){.label{position:static}}
+.label h2{font-size:22px;font-weight:750;letter-spacing:-.015em}
+.label .tag{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--faint);margin-top:4px;display:block}
 
-.side h2{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--accent);margin:36px 0 14px;display:flex;align-items:center;gap:10px;
-}
-.side h2::after{content:"";flex:1;border-top:1px solid var(--side-line)}
+/* about grid */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+@media(max-width:600px){.facts{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h4{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:10px}
+.card ul{list-style:none}
+.card li{font-size:14.5px;padding:3px 0}
+.card li .k{display:inline-block;min-width:44px;color:var(--faint);font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px}
+.card .deg{font-weight:650;line-height:1.4}
+.card .sch{color:var(--muted);font-size:13.5px}
+.card .yr{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--accent)}
+.card .edu+.edu{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.about p+p{margin-top:14px}
+.about p{color:var(--muted);font-size:16.5px}
+.about b{color:var(--ink);font-weight:650}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chips li{font-size:13px;padding:5px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.chips li.hot{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:600}
 
-.side ul{list-style:none}
-.side .contact li{
-  display:flex;gap:12px;padding:6px 0;font-size:13.5px;color:#cfd8de;
-  align-items:baseline;word-break:break-all;
-}
-.side .contact .k{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--side-soft);min-width:52px;
-}
-.side .contact a{color:#cfd8de}
-.side .contact a:hover{color:var(--accent);text-decoration:none}
-
-.side .edu li{padding:9px 0;border-bottom:1px dashed var(--side-line)}
-.side .edu li:last-child{border-bottom:none}
-.side .edu .deg{font-weight:650;font-size:14px;color:#fff;line-height:1.4}
-.side .edu .sch{font-size:12.5px;color:var(--side-soft)}
-.side .edu .yr{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;color:var(--accent)}
-
-.side .chips{display:flex;flex-wrap:wrap;gap:7px}
-.side .chips li{
-  font-size:12px;padding:4px 11px;border:1px solid var(--side-line);border-radius:999px;
-  color:#cfd8de;
-}
-.side .chips li.hot{border-color:var(--accent);color:var(--accent)}
-
-.side .coord{
-  margin-top:44px;font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:10.5px;color:var(--side-soft);letter-spacing:.06em;
-}
-.side .coord b{color:var(--lane);font-weight:600}
-
-/* ============ MAIN ============ */
-.main{padding:46px 48px 40px}
-@media(max-width:600px){.main{padding:36px 24px}}
-
-.main section+section{margin-top:46px}
-.main h2{
-  font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
-  padding-bottom:9px;margin-bottom:22px;border-bottom:2px solid var(--line);
-  position:relative;display:flex;align-items:baseline;gap:10px;
-}
-.main h2::after{
-  content:"";position:absolute;left:0;bottom:-2px;width:52px;border-bottom:2px solid var(--accent);
-}
-.main h2 .tag{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;font-weight:600;
-  letter-spacing:.14em;color:var(--muted);text-transform:none;
-}
-
-.profile p+p{margin-top:12px}
-.profile b{color:var(--accent-dark);font-weight:650}
-
-/* waypoint timeline */
-.route{position:relative;padding-left:30px}
-.route::before{
-  content:"";position:absolute;left:8px;top:6px;bottom:6px;width:0;
-  border-left:2px dashed #c4ccd2;
-}
-.stop{position:relative;padding-bottom:30px}
-.stop:last-child{padding-bottom:0}
+/* timeline */
+.route{position:relative;padding-left:32px}
+.route::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;border-left:2px solid var(--line)}
+.stop{position:relative}
+.stop+.stop{margin-top:32px}
 .stop::before{
-  content:"";position:absolute;left:-27px;top:6px;width:12px;height:12px;border-radius:50%;
-  background:#fff;border:3px solid var(--accent);
+  content:"";position:absolute;left:-31px;top:7px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--accent);
 }
-.stop.now::before{background:var(--lane);border-color:var(--lane);box-shadow:0 0 0 4px rgba(245,179,1,.25)}
-.stop .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.stop h3{font-size:16.5px;font-weight:700}
-.stop .org{color:var(--accent-dark);font-size:14px;font-weight:600}
-.stop .when{
-  margin-left:auto;font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:12px;color:var(--muted);
+.stop.now::before{background:var(--hl);border-color:var(--hl);box-shadow:0 0 0 5px var(--hl-soft)}
+.stop .when{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--faint)}
+.stop h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-top:2px}
+.stop .org{color:var(--accent);font-weight:600;font-size:14.5px}
+.stop p{color:var(--muted);font-size:15px;margin-top:8px}
+.flag{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:.12em;
+  color:var(--hl);background:var(--hl-soft);border-radius:4px;padding:2px 7px;vertical-align:3px;margin-left:6px;
 }
-.stop p{margin-top:6px;font-size:14.5px;color:var(--muted)}
-.stop .now-flag{
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10px;font-weight:700;
-  letter-spacing:.12em;color:#8a6400;background:rgba(245,179,1,.25);
-  border-radius:3px;padding:2px 7px;vertical-align:2px;
+.focus{list-style:none;margin-top:14px;display:grid;gap:8px}
+.focus li{
+  font-size:14.5px;color:var(--muted);padding:10px 14px;border-radius:10px;
+  background:var(--surface);border:1px solid var(--line);
 }
+.focus li b{color:var(--ink);font-weight:650;display:block;font-size:14.5px}
 
 /* publications */
+.pubs{display:grid;gap:16px}
 .pub{
-  display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start;
-  padding:16px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:210px 1fr;gap:22px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;
+  transition:border-color .15s,box-shadow .15s;
 }
-.pub:last-of-type{border-bottom:none}
-.pub .thumb{display:block;border:1px solid var(--line);border-radius:4px;overflow:hidden;line-height:0;background:#f4f6f7}
-.pub .thumb img{width:100%;height:92px;object-fit:cover;object-position:center top;transition:transform .2s ease}
-.pub .thumb:hover img{transform:scale(1.04)}
+.pub:hover{border-color:var(--faint);box-shadow:var(--shadow)}
+.pub .thumb{display:block;border-radius:10px;overflow:hidden;line-height:0;background:#fff;border:1px solid var(--line)}
+.pub .thumb img{width:100%;height:124px;object-fit:cover;object-position:center top;transition:transform .3s ease}
+.pub:hover .thumb img{transform:scale(1.04)}
 .pub .venue{
-  display:inline-block;font-family:ui-monospace,"SF Mono",Menlo,monospace;
-  font-size:10.5px;font-weight:700;letter-spacing:.1em;
-  color:var(--accent-dark);border:1.5px solid var(--accent);border-radius:3px;
-  padding:1.5px 8px;margin-bottom:6px;
+  display:inline-block;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;font-weight:700;
+  letter-spacing:.08em;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:2px 8px;
 }
-.pub h3{font-size:15.5px;font-weight:700;line-height:1.4}
+.pub .first{color:var(--hl);background:var(--hl-soft);margin-left:6px}
+.pub h3{font-size:16.5px;font-weight:700;line-height:1.38;letter-spacing:-.005em;margin-top:8px}
 .pub h3 a{color:var(--ink)}
-.pub h3 a:hover{color:var(--accent-dark);text-decoration:none}
-.pub .authors{font-size:13.5px;color:var(--muted);margin-top:3px}
-.pub .authors b{color:var(--ink);font-weight:650}
-.pub-note{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--muted);margin-top:14px}
-@media(max-width:640px){.pub{grid-template-columns:1fr}.pub .thumb img{height:140px}}
+.pub h3 a:hover{color:var(--accent);text-decoration:none}
+.pub .authors{font-size:14px;color:var(--muted);margin-top:5px}
+.pub .authors b{color:var(--ink);font-weight:650;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.pub-note{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--faint);margin-top:14px}
+@media(max-width:640px){.pub{grid-template-columns:1fr}.pub .thumb img{height:160px}}
 
 /* projects */
-.proj{padding:4px 0}
-.proj h3{font-size:16px;font-weight:700}
-.proj .sub{color:var(--accent-dark);font-size:13.5px;font-weight:600}
-.proj p{font-size:14.5px;color:var(--muted);margin-top:4px}
+.projs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.projs{grid-template-columns:1fr}}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;position:relative}
+.proj .sub{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.proj h3{font-size:16.5px;font-weight:700;line-height:1.35;margin-top:6px;letter-spacing:-.005em}
+.proj p{font-size:14.5px;color:var(--muted);margin-top:8px}
 
-/* skills — sensor gauges */
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+/* skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
 @media(max-width:640px){.skills{grid-template-columns:1fr}}
-.skill .lbl{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600}
-.skill .lbl .pct{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11.5px;color:var(--muted)}
-.skill .bar{
-  margin-top:5px;height:8px;border-radius:4px;background:#edf0f2;overflow:hidden;position:relative;
-}
+.skill .lbl{display:flex;justify-content:space-between;font-size:14.5px;font-weight:600}
+.skill .lbl .pct{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--faint);font-weight:500}
+.skill .bar{margin-top:7px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
 .skill .bar i{
-  display:block;height:100%;background:linear-gradient(90deg,var(--accent),#03c39a);
-  border-radius:4px;position:relative;
-}
-.skill .bar i::after{ /* gauge ticks */
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.5) 18px 20px);
+  display:block;height:100%;border-radius:3px;
+  background:var(--accent);
 }
 
-/* footer strip */
-.foot{
-  grid-column:1 / -1;background:var(--side);color:var(--side-soft);
-  padding:14px 34px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
-  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:11px;letter-spacing:.05em;
-  border-top:3px solid var(--lane);
+/* footer */
+footer{border-top:1px solid var(--line);color:var(--faint);margin-top:24px}
+footer .wrap{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;padding-top:28px;padding-bottom:36px;font-size:13.5px;
 }
-.foot a{color:var(--side-soft)}
-.foot a:hover{color:var(--accent);text-decoration:none}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent);text-decoration:none}
 </style>
+<script>
+try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}
+</script>
 </head>
 <body>
 
-<div class="sheet">
-
-  <!-- ============ SIDEBAR ============ -->
-  <aside class="side">
-    <div class="badge">YC</div>
-    <h1>Youngjae Choi</h1>
-    <p class="tagline">Research Scientist<br><b>autonomous driving</b> × <b>generative AI</b></p>
-    <a class="dl" href="images/CV_yjchoi.pdf">Download CV ↓</a>
-
-    <h2>Contact</h2>
-    <ul class="contact">
-      <li><span class="k">mail</span><a href="mailto:yj951118@soongsil.ac.kr">yj951118@soongsil.ac.kr</a></li>
-      <li><span class="k">mail</span><a href="mailto:yscompany18@gmail.com">yscompany18@gmail.com</a></li>
-      <li><span class="k">git</span><a href="https://github.com/yjyj1118" target="_blank" rel="noopener">github.com/yjyj1118</a></li>
-      <li><span class="k">lab</span><a href="https://ssurealitylab.github.io/Realitylab-site/" target="_blank" rel="noopener">Reality Lab, Soongsil Univ.</a></li>
-      <li><span class="k">base</span><span>Seoul, Republic of Korea</span></li>
-      <li><span class="k">nat</span><span>Dual citizenship — KR · US</span></li>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Youngjae Choi</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
     </ul>
+    <button class="theme" id="themeBtn" aria-label="Toggle color theme" title="Toggle theme"><svg width="16" height="16" viewBox="0 0 16 16" style="vertical-align:middle"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
+  </div>
+</nav>
 
-    <h2>Education</h2>
-    <ul class="edu">
-      <li>
-        <div class="deg">M.S. in Digital Media</div>
-        <div class="sch">Soongsil University · Reality Lab (Prof. Heewon Kim)</div>
-        <div class="yr">2024.03 — present</div>
-      </li>
-      <li>
-        <div class="deg">B.S. in Statistics &amp; Actuarial Science</div>
-        <div class="sch">Soongsil University</div>
-        <div class="yr">2015.03 — 2022.02</div>
-      </li>
-    </ul>
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Generative AI · Computer Vision</span>
+      <h1>Youngjae Choi</h1>
+      <p class="lead">
+        I work on <em>generative models and computer vision</em> — from fine-grained image and
+        motion generation to <b>world models</b>, <b>vision-language models</b> and
+        <b>multi-modal 3D perception</b> for real-world systems.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="images/CV_yjchoi.pdf">Download CV ↓</a>
+        <a class="btn" href="mailto:yj951118@soongsil.ac.kr">Email</a>
+        <a class="btn" href="https://github.com/yjyj1118" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
 
-    <h2>Interests</h2>
-    <ul class="chips">
-      <li class="hot">Autonomous Driving</li>
-      <li>Image Generation</li>
-      <li>Motion Generation</li>
-      <li>Embodied AI</li>
-      <li>Computer Vision</li>
-    </ul>
+    <aside class="glance">
+      <div class="now">
+        <div class="mark">YC</div>
+        <div><b>Research Scientist, Motifdrive</b><span>M.S., Reality Lab · Soongsil University</span></div>
+      </div>
+      <div class="stats">
+        <div><b>5</b><span>papers</span></div>
+        <div><b>4</b><span>lead author</span></div>
+        <div><b>4</b><span>in 2026</span></div>
+      </div>
+      <div class="venues"><span>ECCV'26</span><span>CVPR'26</span><span>CVPRW'26</span><span>WACV'26</span><span>BMVC'25</span></div>
+    </aside>
+  </div>
+</header>
 
-    <p class="coord">POS <b>37.4963°N 126.9575°E</b><br>HDG 000.0° · MODE <b>AUTO</b></p>
-  </aside>
-
-  <!-- ============ MAIN ============ -->
-  <main class="main">
-
-    <section class="profile">
-      <h2>Career Profile <span class="tag">// perception &amp; generation</span></h2>
+<!-- ============ ABOUT ============ -->
+<section class="block about" id="about">
+  <div class="wrap">
+    <div class="label"><h2>About</h2></div>
+    <div>
       <p>
-        Research scientist at <b>Motifdrive</b>, an autonomous-vehicle start-up, building the data engine
-        behind end-to-end driving: generative AI for synthetic data generation and augmentation,
-        VLM-based data management and scenario mining, and 3D object detection on multi-modal
-        sensor data.
+        Research scientist at <b>Motifdrive</b>, an autonomous-vehicle start-up. I research world models
+        for synthetic data generation, simulation and augmentation in end-to-end driving, build
+        VLM-based frameworks for large-scale data curation and scenario mining, and contribute to
+        3D object detection on multi-modal (LiDAR + camera) sensor data.
       </p>
       <p>
         On the research side (Reality Lab, Soongsil University), I work on multimodal generative
@@ -275,120 +279,197 @@ a:hover{text-decoration:underline}
         keep detailed semantics instead of averaging them away. Statistician by training,
         vision researcher by obsession.
       </p>
-    </section>
 
-    <section>
-      <h2>Experiences <span class="tag">// route log</span></h2>
-      <div class="route">
-        <div class="stop now">
-          <div class="head">
-            <h3>Research Scientist <span class="now-flag">CURRENT</span></h3>
-            <span class="org">Motifdrive</span>
-            <span class="when">2026.01 — now</span>
+      <div class="facts">
+        <div class="card">
+          <h4>Education</h4>
+          <div class="edu">
+            <div class="deg">M.S. in Digital Media</div>
+            <div class="sch">Soongsil University · Reality Lab (Prof. Heewon Kim)</div>
+            <div class="yr">2024.03 — present</div>
           </div>
-          <p>Generative AI for synthetic data in end-to-end autonomous driving; VLM-based data management &amp; scenario mining frameworks; 3D object detection with camera–LiDAR multi-modal sensor data.</p>
+          <div class="edu">
+            <div class="deg">B.S. in Statistics &amp; Actuarial Science</div>
+            <div class="sch">Soongsil University</div>
+            <div class="yr">2015.03 — 2022.02</div>
+          </div>
         </div>
-        <div class="stop">
-          <div class="head">
-            <h3>Graduate Researcher</h3>
-            <span class="org">Reality Lab, Soongsil University</span>
-            <span class="when">2024.03 — 2026.02</span>
-          </div>
-          <p>Multimodal generative models: fine-grained image generation, emotion-aware text-to-motion. TA for Deep Learning (2024) &amp; Machine Learning (2025).</p>
+        <div class="card">
+          <h4>Contact</h4>
+          <ul>
+            <li><span class="k">mail</span><a href="mailto:yj951118@soongsil.ac.kr">yj951118@soongsil.ac.kr</a></li>
+            <li><span class="k">mail</span><a href="mailto:yscompany18@gmail.com">yscompany18@gmail.com</a></li>
+            <li><span class="k">git</span><a href="https://github.com/yjyj1118" target="_blank" rel="noopener">github.com/yjyj1118</a></li>
+            <li><span class="k">lab</span><a href="https://ssurealitylab.github.io/Realitylab-site/" target="_blank" rel="noopener">Reality Lab, Soongsil Univ.</a></li>
+            <li><span class="k">base</span>Seoul, Republic of Korea</li>
+            <li><span class="k">nat</span>Dual citizenship — KR · US</li>
+          </ul>
         </div>
-        <div class="stop">
-          <div class="head">
-            <h3>Research Intern</h3>
-            <span class="org">Reality Lab, Soongsil University</span>
-            <span class="when">2023.06 — 2024.02</span>
-          </div>
-          <p>AI-powered XR Smart Space (SME R&amp;D Support Program): AR scene reconstruction with 3D Gaussian Splatting and automatic box-collider estimation for real-time Unity XR interaction.</p>
+        <div class="card" style="grid-column:1/-1">
+          <h4>Interests</h4>
+          <ul class="chips">
+            <li class="hot">Generative Models</li>
+            <li class="hot">World Models</li>
+            <li>Image Generation</li>
+            <li>Motion Generation</li>
+            <li>Embodied AI</li>
+            <li>Computer Vision</li>
+            <li>Autonomous Driving</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Publications <span class="tag">// 5 papers</span></h2>
+<!-- ============ EXPERIENCE ============ -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="label"><h2>Experience</h2></div>
+    <div class="route">
+      <div class="stop now">
+        <span class="when">2026.01 — now</span>
+        <h3>Research Scientist <span class="flag">CURRENT</span></h3>
+        <div class="org">Motifdrive · Autonomous Vehicle Start-up</div>
+        <p>World models for synthetic data, simulation and augmentation in end-to-end driving; VLM-based data curation, annotation and scenario-mining workflows; 3D object detection with LiDAR–camera sensor fusion.</p>
+        <ul class="focus">
+          <li><b>World-model simulation &amp; augmentation</b>Novel-view and trajectory-based scenario generation; bridging the domain gap between reconstructed/simulated scenes and real sensor data.</li>
+          <li><b>VLM data curation &amp; scenario mining</b>Automated filtering, categorization and retrieval of rare, high-value and safety-critical driving samples.</li>
+          <li><b>Annotation tooling</b>Quality control and validation for 2D/3D detection and HD map data at scale.</li>
+        </ul>
+      </div>
+      <div class="stop">
+        <span class="when">2024.03 — 2026.02</span>
+        <h3>Graduate Researcher</h3>
+        <div class="org">Reality Lab, Soongsil University</div>
+        <p>Multimodal generative models: fine-grained image generation, emotion-aware text-to-motion. TA for Deep Learning (2024) &amp; Machine Learning (2025).</p>
+      </div>
+      <div class="stop">
+        <span class="when">2023.06 — 2024.02</span>
+        <h3>Research Intern</h3>
+        <div class="org">Reality Lab, Soongsil University</div>
+        <p>AI-powered XR Smart Space (SME R&amp;D Support Program): AR scene reconstruction with 3D Gaussian Splatting and automatic box-collider estimation for real-time Unity XR interaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <article class="pub">
-        <a class="thumb" href="images/ECCV2026_CC.png" target="_blank"><img src="images/ECCV2026_CC.png" alt="CulinaryCut-VLP"></a>
-        <div>
-          <span class="venue">ECCV 2026</span>
-          <h3>CulinaryCut: A Physics-Grounded Cutting Benchmark for Vision-Language-Action Models</h3>
-          <p class="authors">Hyunseo Koh*, <b>Youngjae Choi</b>*, Chang-Yong Song*, Misa Viveiros, David Hyde, and Heewon Kim</p>
-        </div>
-      </article>
+<!-- ============ PUBLICATIONS ============ -->
+<section class="block" id="publications">
+  <div class="wrap">
+    <div class="label"><h2>Publications</h2><span class="tag">5 papers</span></div>
+    <div>
+      <div class="pubs">
+        <article class="pub">
+          <a class="thumb" href="images/ECCV2026_CC.png" target="_blank"><img src="images/ECCV2026_CC.png" alt="CulinaryCut" loading="lazy"></a>
+          <div>
+            <span class="venue">ECCV 2026</span><span class="venue first">CO-FIRST</span>
+            <h3>CulinaryCut: A Physics-Grounded Cutting Benchmark for Vision-Language-Action Models</h3>
+            <p class="authors">Hyunseo Koh*, <b>Youngjae Choi</b>*, Chang-Yong Song*, Misa Viveiros, David Hyde, and Heewon Kim</p>
+          </div>
+        </article>
 
-      <article class="pub">
-        <a class="thumb" href="images/CVPR2026_CLP.pdf" target="_blank"><img src="images/CVPR2026_CLP.png" alt="CLP dataset"></a>
-        <div>
-          <span class="venue">CVPR 2026</span>
-          <h3><a href="https://clp-dataset.github.io" target="_blank" rel="noopener">CLP: A Real-World Dataset of Contaminated Lens Protectors for Robust Semantic Segmentation</a></h3>
-          <p class="authors">Sungyong Park*, Sooyoung Choi*, Hyunseo Koh, <b>Youngjae Choi</b>, and Heewon Kim</p>
-        </div>
-      </article>
+        <article class="pub">
+          <a class="thumb" href="images/CVPR2026_CLP.pdf" target="_blank"><img src="images/CVPR2026_CLP.png" alt="CLP dataset" loading="lazy"></a>
+          <div>
+            <span class="venue">CVPR 2026</span>
+            <h3><a href="https://clp-dataset.github.io" target="_blank" rel="noopener">CLP: A Real-World Dataset of Contaminated Lens Protectors for Robust Semantic Segmentation</a></h3>
+            <p class="authors">Sungyong Park*, Sooyoung Choi*, Hyunseo Koh, <b>Youngjae Choi</b>, and Heewon Kim</p>
+          </div>
+        </article>
 
-      <article class="pub">
-        <a class="thumb" href="images/CVPRW2026_feel.png" target="_blank"><img src="images/CVPRW2026_feel.png" alt="FEEL"></a>
-        <div>
-          <span class="venue">CVPRW 2026</span>
-          <h3>FEEL: Focus on Emotion-Enriched Motion Using Unsupervised Learning for Text-to-Motion Generation</h3>
-          <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</p>
-        </div>
-      </article>
+        <article class="pub">
+          <a class="thumb" href="images/CVPRW2026_feel.png" target="_blank"><img src="images/CVPRW2026_feel.png" alt="FEEL" loading="lazy"></a>
+          <div>
+            <span class="venue">CVPRW 2026</span><span class="venue first">FIRST</span>
+            <h3>FEEL: Focus on Emotion-Enriched Motion Using Unsupervised Learning for Text-to-Motion Generation</h3>
+            <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh, and Heewon Kim</p>
+          </div>
+        </article>
 
-      <article class="pub">
-        <a class="thumb" href="images/WACV2026_mbti.pdf" target="_blank"><img src="images/WACV2026_mbti.png" alt="MBTI"></a>
-        <div>
-          <span class="venue">WACV 2026</span>
-          <h3>MBTI: Metric-Based Textual Inversion for Fine-Grained Image Generation</h3>
-          <p class="authors">ByungKwan Chae*, <b>Youngjae Choi</b>*, and Heewon Kim</p>
-        </div>
-      </article>
+        <article class="pub">
+          <a class="thumb" href="images/WACV2026_mbti.pdf" target="_blank"><img src="images/WACV2026_mbti.png" alt="MBTI" loading="lazy"></a>
+          <div>
+            <span class="venue">WACV 2026</span><span class="venue first">CO-FIRST</span>
+            <h3>MBTI: Metric-Based Textual Inversion for Fine-Grained Image Generation</h3>
+            <p class="authors">ByungKwan Chae*, <b>Youngjae Choi</b>*, and Heewon Kim</p>
+          </div>
+        </article>
 
-      <article class="pub">
-        <a class="thumb" href="images/BMVC2025_udt.png" target="_blank"><img src="images/BMVC2025_udt.png" alt="UDT"></a>
-        <div>
-          <span class="venue">BMVC 2025</span>
-          <h3><a href="https://ssu-reality-lab.github.io/UDT/" target="_blank" rel="noopener">UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models</a></h3>
-          <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh*, Byungkwan Chae*, Hojae Jeong*, and Heewon Kim</p>
-        </div>
-      </article>
-
+        <article class="pub">
+          <a class="thumb" href="images/BMVC2025_udt.png" target="_blank"><img src="images/BMVC2025_udt.png" alt="UDT" loading="lazy"></a>
+          <div>
+            <span class="venue">BMVC 2025</span><span class="venue first">CO-FIRST</span>
+            <h3><a href="https://ssu-reality-lab.github.io/UDT/" target="_blank" rel="noopener">UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models</a></h3>
+            <p class="authors"><b>Youngjae Choi</b>*, Hyunsuh Koh*, Byungkwan Chae*, Hojae Jeong*, and Heewon Kim</p>
+          </div>
+        </article>
+      </div>
       <p class="pub-note">* equal contribution</p>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Projects <span class="tag">// selected</span></h2>
+<!-- ============ PROJECTS ============ -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="label"><h2>Projects</h2><span class="tag">Selected</span></div>
+    <div class="projs">
       <div class="proj">
-        <h3>AI-powered XR Smart Space Solution</h3>
+        <div class="sub">Motifdrive</div>
+        <h3>World Model-based Data Augmentation &amp; Driving Simulation</h3>
+        <p>World models for synthetic data generation and simulation in end-to-end driving, inspired by large-scale frameworks such as AlpaSim — controllable scenario generation, novel-view and trajectory-based simulation to widen coverage and reduce reliance on real-world collection.</p>
+      </div>
+      <div class="proj">
+        <div class="sub">Motifdrive</div>
+        <h3>VLM-based Data Curation &amp; Driving Scenario Mining</h3>
+        <p>Pipelines that use vision-language models to understand, categorize and retrieve complex driving scenarios, automatically surfacing rare and safety-critical samples for training and evaluating end-to-end driving models.</p>
+      </div>
+      <div class="proj">
+        <div class="sub">Motifdrive</div>
+        <h3>VQA-based Annotation Tool for Autonomous Driving</h3>
+        <p>An annotation framework for 2D/3D object detection and HD map tasks — vision-language reasoning, automated consistency checks and efficient interaction with large-scale sensor data to cut manual effort.</p>
+      </div>
+      <div class="proj">
         <div class="sub">National SME R&amp;D Support Program</div>
+        <h3>AI-powered XR Smart Space Solution</h3>
         <p>Reconstructing interactive virtual spaces in AR with 3D Gaussian Splatting; a system that automatically estimates box colliders from reconstructed geometry, enabling real-time interaction in Unity-based XR environments.</p>
       </div>
-    </section>
-
-    <section>
-      <h2>Skills &amp; Proficiency <span class="tag">// sensor readout</span></h2>
-      <div class="skills">
-        <div class="skill"><div class="lbl"><span>Python</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>PyTorch</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Diffusion Models</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>Detection &amp; Segmentation (MMCV)</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>3D Gaussian Splatting</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>MATLAB</span><span class="pct">70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
-        <div class="skill"><div class="lbl"><span>LaTeX</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <div class="foot">
-    <span>© 2026 YOUNGJAE CHOI — ALL SYSTEMS NOMINAL</span>
-    <span><a href="https://github.com/yjyj1118" target="_blank" rel="noopener">GITHUB</a> · <a href="mailto:yj951118@soongsil.ac.kr">MAIL</a> · SEOUL, KR</span>
+    </div>
   </div>
+</section>
 
-</div>
+<!-- ============ SKILLS ============ -->
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="label"><h2>Skills</h2></div>
+    <div class="skills">
+      <div class="skill"><div class="lbl"><span>Python</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>PyTorch</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>Diffusion Models</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>LaTeX</span><span class="pct">90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>Detection &amp; Segmentation (MMCV)</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>3D Gaussian Splatting</span><span class="pct">80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><div class="lbl"><span>MATLAB</span><span class="pct">70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <div class="wrap">
+    <span>© 2026 Youngjae Choi</span>
+    <span><a href="https://github.com/yjyj1118" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:yj951118@soongsil.ac.kr">Email</a> · Seoul, Korea</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById("themeBtn").addEventListener("click",function(){
+  var r=document.documentElement,cur=r.getAttribute("data-theme");
+  if(!cur)cur=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+  var next=cur==="dark"?"light":"dark";
+  r.setAttribute("data-theme",next);
+  try{localStorage.setItem("theme",next)}catch(e){}
+});
+</script>
 </body>
 </html>
